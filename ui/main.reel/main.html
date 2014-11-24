@@ -37,6 +37,16 @@
                 }
             ]
         },
+        "checkbox": {
+            "prototype": "digit/ui/checkbox.reel",
+            "properties": {
+                "element": {"#": "checkbox"},
+                "checked": true
+            },
+            "bindings": {
+                "checked": {"<->": "@owner.task.completed"}
+            }
+        },
         "list": {
             "prototype": "digit/ui/list.reel",
             "properties": {
@@ -46,6 +56,25 @@
         },
         "rangeController": {
             "prototype": "montage/core/range-controller"
+        },
+        "task1": {
+            "prototype": "ui/task.reel",
+            "properties": {
+                "element": {"#": "task1"}
+            },
+            "bindings": {
+                "task": {"<->": "@list:iteration.object"}
+            }
+        },
+        "textField": {
+            "prototype": "digit/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "textField"},
+                "placeholderValue": "Text"
+            },
+            "bindings": {
+                "value": {"<->": "@owner.task.title"}
+            }
         },
         "title": {
             "prototype": "digit/ui/title.reel",
@@ -62,8 +91,10 @@
         <h1 data-montage-id="title"></h1>
         <button data-montage-id="button"></button>
         <ul data-montage-id="list">
-            <li></li>
+            <li data-montage-id="task1"></li>
         </ul>
+        <input type="checkbox" data-montage-id="checkbox">
+        <input data-montage-id="textField" type="text">
     </div>
 </body>
 </html>
